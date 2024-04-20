@@ -16,7 +16,7 @@ class City(BaseModel, Base):
             String(60), ForeignKey("states.id"), nullable=False
             )
 
-    places = relationship("Place", backref="cities", cascade="all, delete")
+    places = relationship("Place", backref="cities", cascade="all, delete-orphan")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

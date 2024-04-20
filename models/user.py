@@ -21,8 +21,8 @@ class User(BaseModel, Base):
     last_name = Column(
             String(128), nullable=False
             )
-    places = relationship("Place", backref="users", cascade="all, delete")
-    reviews = relationship("Review", backref="users", cascade="all, delete")
+    places = relationship("Place", backref="users", cascade="all, delete-orphan")
+    reviews = relationship("Review", backref="users", cascade="all, delete-orphan")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
