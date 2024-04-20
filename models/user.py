@@ -2,7 +2,7 @@
 """This module defines a class User"""
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
-
+from sqlalchemy.orm import relationship, aliased
 
 class User(BaseModel, Base):
     """This class defines a user by various attributes"""
@@ -20,6 +20,8 @@ class User(BaseModel, Base):
     last_name = Column(
             String(128), nullable=False
             )
-
+    places = relationship("Place", backref="users", cascade="all, delete")
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+alias = aliased(User, name="user")
