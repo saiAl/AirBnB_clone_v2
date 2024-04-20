@@ -17,9 +17,10 @@ class FileStorage:
             for key, value in FileStorage.__objects.items():
                 if cls.__name__ in key:
                     new.update({key: value})
-            return new;
+            return new
 
     def delete(self, obj=None):
+        """ delete an object """
         if (obj != None):
             for oj in FileStorage.__objects.keys():
                 if (oj.split('.')[1] == obj.id):
