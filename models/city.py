@@ -2,7 +2,7 @@
 """ City Module for HBNB project """
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Integer, ForeignKey
-
+from sqlalchemy.orm import relationship, aliased
 
 class City(BaseModel, Base):
     """ The city class, contains state ID and name """
@@ -15,5 +15,9 @@ class City(BaseModel, Base):
             String(60), ForeignKey("states.id"), nullable=False
             )
 
+    places = relationship("Place", backref="cities", cascade="all, delete")
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+alias = aliased(City, name="cities")
