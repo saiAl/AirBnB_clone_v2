@@ -35,20 +35,15 @@ class DBStorage:
 
         objects = None
         _classes = [Amenity, User, State, City, Place, Review]
-        if (cls is None):
+        if (cls is not None):
             objects = self.__session.query(cls)
         else:
             objects = []
             for cls in _classes:
                 objects.append(self.__session.query(cls))
 
-        new = {}
-        for obj in objects:
-            name = type(obj).__name__
-            key = f"{name}.{obj.id}"
-            new.update({key: obj})
-
-        return new
+        return {'{}.{}'.format(type(obj).__name__, obj.id):
+                obj for obj in objects}
 
     def reload(self):
         """ create all Tables """
