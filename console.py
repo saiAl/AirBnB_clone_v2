@@ -124,6 +124,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
 
+        new_instance = self.classes[arguments[0]]()
         lst = arguments[2].replace(' ', '&').split('&')
         arguments_dict = {}
         try:
@@ -132,11 +133,10 @@ class HBNBCommand(cmd.Cmd):
                 value = value.replace('"', ' ')
                 if key == 'name':
                     value = value.replace('_', ' ')
-                arguments_dict.update({key: value})
+                setattr(new_instance, key, value)
         except Exception:
             pass
 
-        new_instance = self.classes[arguments[0]](**arguments_dict)
         storage.save()
         print(new_instance.id)
         storage.save()
