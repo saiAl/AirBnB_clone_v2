@@ -19,6 +19,12 @@ class FileStorage:
                     new.update({key: value})
             return new;
 
+    def delete(self, obj=None):
+        if (obj != None):
+            for oj in FileStorage.__objects.keys():
+                if (oj.split('.')[1] == obj.id):
+                    del FileStorage.__objects[oj]
+                    break
     def new(self, obj):
         """Adds new object to storage dictionary"""
         self.all().update({obj.to_dict()['__class__'] + '.' + obj.id: obj})
