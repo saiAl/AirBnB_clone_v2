@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # script that sets up your web servers for the deployment of web_static
 
-#sudo apt-get -y update
-#sudo apt-get -y install nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
 
 make_dir() {
         if [ ! -d "$1" ]; then
@@ -32,4 +32,3 @@ path="/etc/nginx/sites-enabled/default"
 sudo sed -i "s/$string_to_replace/$conf/" "$path"
 
 sudo service nginx restart
-
