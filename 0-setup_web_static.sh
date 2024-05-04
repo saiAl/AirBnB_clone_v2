@@ -7,14 +7,9 @@ sudo apt-get install -y nginx
 sudo mkdir -p /data/web_static/shared/
 sudo mkdir -p /data/web_static/releases/test/
 
-if [ -f /data/web_static/current ]; then
 
-	sudo rm -f /data/web_Static/current
-	sudo ln -s /data/web_static/releases/test/ /data/web_static/current
-else
-	sudo ln -s /data/web_static/releases/test/ /data/web_static/current
-
-fi
+sudo rm -f /data/web_Static/current
+sudo ln -s /data/web_static/releases/test/ /data/web_static/current
 
 echo "<h1>simple content</h1>" | sudo tee /data/web_static/releases/test/index.html > /dev/null
 sudo chown -hR "$USER":"$USER" /data/
