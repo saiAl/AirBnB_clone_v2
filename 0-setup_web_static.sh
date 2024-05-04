@@ -4,8 +4,8 @@
 sudo apt-get -y update
 sudo apt-get install -y nginx
 
-mkdir -p /data/web_static/shared/
-mkdir -p /data/web_static/releases/test/
+sudo mkdir -p /data/web_static/shared/
+sudo mkdir -p /data/web_static/releases/test/
 
 if [ -f /data/web_static/current ]; then
 
