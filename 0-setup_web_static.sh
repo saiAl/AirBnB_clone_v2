@@ -21,4 +21,4 @@ path="/etc/nginx/sites-enabled/default"
 sudo sed -i "s/$string_to_replace/$conf/" "$path"
 
 sudo service nginx restart
-exit 1
+exit 0
